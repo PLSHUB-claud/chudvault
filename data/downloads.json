@@ -1,0 +1,41 @@
+[
+  {
+    "id": "dl-mogged-vpn",
+    "title": "MoggedVPN - Versao PC (Windows) & Mobile (Android)",
+    "category": "APP",
+    "version": "v1.0 (Windows & Android)",
+    "size": "45.8 MB (PC) / 24.3 MB (APK)",
+    "date": "2026-09-22",
+    "author": "PLSHUB-claud",
+    "status": "HOT",
+    "image": "assets/mogged_vpn.jpg",
+    "desc": "a VPN mais mogger da internet brasileira",
+    "greentext": "versao oficial para PC e Android, baixe o instalador correspondente",
+    "tags": [],
+    "links": [
+      { "name": "Baixar MoggedVPN_Setup.exe (Windows PC)", "url": "https://raw.githubusercontent.com/PLSHUB-claud/MOGGED-VPN/main/MoggedVPN_Setup.exe", "type": "direct" },
+      { "name": "Baixar MoggedVPN-Android.apk (Mobile Android)", "url": "https://raw.githubusercontent.com/PLSHUB-claud/MOGGED-VPN/main/MoggedVPN-Android.apk", "type": "direct" }
+    ],
+    "md5": "f8a912bb01c234ee910245a8df23bc10",
+    "pass": "sem-senha"
+  },
+  {
+    "id": "dl-floyd-painel",
+    "title": "Floyd Painel - Versao PC (Windows)",
+    "category": "APP",
+    "version": "v1.0 (PC Windows x64)",
+    "size": "88.3 MB",
+    "date": "2026-09-22",
+    "author": "PLSHUB-claud",
+    "status": "HOT",
+    "image": "assets/floyd_painel.png",
+    "desc": "floyd painel é um painel de RAID/NUKe com a imagen do george floyd , ele é do tipo nuker que deleta o server banindo membros e criando canais em massa",
+    "greentext": "baixe o floyd.exe e execute diretamente no seu sistema",
+    "tags": [],
+    "links": [
+      { "name": "Baixar floyd.exe (Direto)", "url": "https://raw.githubusercontent.com/PLSHUB-claud/FLOYD-PAINEL/main/floyd.exe", "type": "direct" }
+    ],
+    "md5": "b0b4234dc9b3b0962813a40705f2c0fd",
+    "pass": "sem-senha"
+  }
+]

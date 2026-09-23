@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1240, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://raw.githubusercontent.com https://github.com; media-src 'self'; font-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; base-uri 'self';">
+  <title>CHUD VAULT // INDEXADOR RETRÔ DE DOWNLOADS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 fill=%22%23b00%22/><rect x=%222%22 y=%222%22 width=%2212%22 height=%2212%22 fill=%22%23000%22/><text x=%224%22 y=%2212%22 font-family=%22monospace%22 font-size=%2210%22 fill=%22%23ff3333%22 font-weight=%22bold%22>D</text></svg>">
+</head>
+<body>
+
+  <div class="site-wrapper">
+
+    <!-- ====================================================================
+         COLUNA PRINCIPAL (Esquerda - conforme silhueta do esboço)
+         ==================================================================== -->
+    <div class="main-column">
+
+      <!-- 1. BANNER (Apenas o GIF rodando em loop contínuo, sem legendas) -->
+      <section class="section-banner" aria-label="Banner Principal">
+        <div class="banner-gif-container">
+          <img src="assets/gif_cena_completa_360.gif" alt="Banner 360" class="banner-gif">
+        </div>
+      </section>
+
+      <!-- 2. DOWNLOADS -->
+      <main class="section-downloads" aria-label="Lista de Downloads">
+        <div class="downloads-title-bar">
+          <div class="downloads-title">
+            <span class="arrow-badge" title="Downloads">^</span>
+            <picture class="flame-title-pic">
+              <source srcset="assets/title_downloads_fire.webp" type="image/webp">
+              <img src="assets/title_downloads_fire.gif" alt="DOWNLOADS" class="flame-title-img">
+            </picture>
+          </div>
+        </div>
+
+        <!-- Barra de Pesquisa -->
+        <div class="search-filter-bar">
+          <div class="search-input-wrapper">
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="search-input" 
+              placeholder="pesquisar por nome" 
+              autocomplete="off"
+              spellcheck="false"
+            >
+          </div>
+        </div>
+
+        <!-- Lista / Grid de Downloads -->
+        <div class="downloads-list" id="downloadsList">
+          <!-- Inserido dinamicamente via JS -->
+        </div>
+      </main>
+
+      <!-- 4. AVISO LEGAL / DISCLAIMER -->
+      <aside class="section-avisos" id="avisosSection" aria-label="Aviso Legal / Disclaimer">
+        <div class="avisos-title">
+          <div>
+            <span>[!]</span> AVISO LEGAL / DISCLAIMER
+          </div>
+          <span class="forum-tag">STICKY / FIXADO</span>
+        </div>
+
+        <div class="avisos-content">
+          <p><strong>Natureza do Conteúdo:</strong> Todo o conteúdo publicado neste site é estritamente cômico, satírico e fictício. Trabalhamos exclusivamente com memes, ironia e humor ácido. Nada aqui deve ser interpretado como fato, verdade factual ou declaração séria de opinião.</p>
+          <p><strong>Tolerância Zero a Discurso de Ódio:</strong> Não promovemos, apoiamos ou compactuamos com discurso de ódio, assédio, discriminação, violência ou qualquer atividade ilegal. Qualquer semelhança com a realidade é mera coincidência da zoeira.</p>
+          <p><strong>Propósito:</strong> O objetivo desta página é unicamente o entretenimento e a diversão. Se você é sensível a humor ácido ou sarcasmo, recomendamos cautela na navegação.</p>
+          <p><strong>Aviso Importante:</strong> Favor não me processar, eu não tenho grana.</p>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- ====================================================================
+         BARRA LATERAL / SIDEBAR (Direita - conforme silhueta vertical do esboço)
+         ==================================================================== -->
+    <aside class="sidebar-column" aria-label="Painel Lateral do Sistema">
+
+      <!-- Bloco: Banner Portal Oficial PLSHUB (Área Verde) -->
+      <div class="sidebar-portal-banner" aria-label="Portal Oficial PLSHUB">
+        <img src="assets/portal_plshub.png" alt="Portal oficial para downloads de PLSHUB!" class="portal-banner-img">
+      </div>
+
+      <!-- Linha Central da Sidebar: Boneco Flutuando (Esquerda) + Anuncie sua Comunidade (Direita - Área Azul) -->
+      <div class="sidebar-mid-row">
+        <!-- Bloco: GIF Boneco Flutuando no Espaço -->
+        <div class="sidebar-box sidebar-gif-box" aria-label="Boneco Flutuando">
+          <img src="assets/boneco_flutuando_espaco.gif" alt="Boneco Flutuando no Espaço" class="sidebar-gif">
+        </div>
+
+        <!-- Bloco: Anuncie sua comunidade / Ornate Frame (Área Azul desenhada) -->
+        <div class="sidebar-anuncie-box" aria-label="Anuncie sua comunidade">
+          <a href="https://discord.gg/uHMcazd2qA" target="_blank" rel="noopener noreferrer" class="sidebar-anuncie-link" title="Anuncie sua comunidade aqui! Clique para entrar no Discord">
+            <img src="assets/anuncie_comunidade.png" alt="Anuncie sua comunidade/grupo aqui" class="sidebar-anuncie-img">
+          </a>
+        </div>
+      </div>
+
+      <!-- Bloco: Donate Bitcoin (Área Inferior desenhada) -->
+      <div class="sidebar-box sidebar-donate-box" aria-label="Doação via Bitcoin">
+        <div class="donate-header">
+          <img src="assets/btc_donate_badge.png" alt="Bitcoin Donate" class="donate-badge-img">
+        </div>
+
+        <div class="donate-tagline">
+          <span class="donate-tagline-red">AJUDE-NOS</span> DOAÇÕES COMO A SUA DE QUALQUER VALOR NOS AJUDARÃO A TRAZER MAIS CONTEÚDO PRO SITE
+        </div>
+
+        <div class="donate-body-row">
+          <!-- Miniatura do QR Code com link para tela cheia -->
+          <a href="donate.html" target="_blank" rel="noopener noreferrer" class="donate-qr-frame" title="Clique para abrir o QR Code em tela cheia">
+            <div class="qr-bracket tl"></div>
+            <div class="qr-bracket tr"></div>
+            <div class="qr-bracket bl"></div>
+            <div class="qr-bracket br"></div>
+            <img src="assets/btc_qr.png" alt="QR Code Bitcoin" class="donate-mini-qr">
+            <span class="qr-click-text">CLIQUE PARA AMPLIAR</span>
+          </a>
+
+          <!-- Endereço e Botão Copiar -->
+          <div class="donate-info-col">
+            <div class="donate-address-label">ENDEREÇO BTC:</div>
+            <div class="donate-address-text" id="sidebarBtcAddr" title="Clique para copiar">bc1qdhvekhnhwl70wf0gzc8fgl8mxnxgng5um0fqvu</div>
+            <button type="button" class="btn-donate-copy" id="btnCopyBtcSidebar" aria-label="Copiar endereço Bitcoin">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="btnCopyBtcSidebarText">COPIAR</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ====================================================================
+         5. SEÇÃO DE COMUNIDADES (Abaixo de todo o conteúdo do site)
+         ==================================================================== -->
+    <section class="section-comunidades" id="comunidadesSection" aria-label="Comunidades">
+      <div class="comunidades-title-bar">
+        <div class="comunidades-title">
+          <span class="arrow-badge" title="Comunidades">^</span>
+          <picture class="flame-title-pic">
+            <source srcset="assets/title_comunidades_fire.webp" type="image/webp">
+            <img src="assets/title_comunidades_fire.gif" alt="COMUNIDADES" class="flame-title-img">
+          </picture>
+        </div>
+        <span class="forum-tag">PARCEIROS / SERVIDORES</span>
+      </div>
+
+      <div class="comunidades-grid">
+        <div class="comunidade-card-placeholder">
+          <div class="comunidade-placeholder-tag">[+] ESPAÇO PUBLICITÁRIO / VAGA ABERTA</div>
+          <p class="comunidade-placeholder-msg">
+            coloque sua comunidade/servidor ou grupo aqui por um precinho bom, me contate no discord pra mais infos <strong class="discord-user-tag">"@ghufa"</strong> ou entre no nosso servidor:
+          </p>
+          <a href="https://discord.gg/uHMcazd2qA" target="_blank" rel="noopener noreferrer" class="btn-discord-join" title="Entrar no servidor do Discord">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.194.373.287a.077.077 0 0 1-.006.128 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+            <span>https://discord.gg/uHMcazd2qA</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ====================================================================
+       MODAL 1: CADASTRAR NOVO DOWNLOAD
+       ==================================================================== -->
+  <div class="modal-overlay" id="modalAddDownload" role="dialog" aria-modal="true" aria-labelledby="modalAddTitle">
+    <div class="modal-window">
+      <div class="modal-header">
+        <span id="modalAddTitle">[+] CADASTRAR NOVO DOWNLOAD</span>
+        <button class="modal-close-btn" id="btnCloseAddModal">X</button>
+      </div>
+      <form id="formAddDownload">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="newTitle">TITULO DO ARQUIVO / PROGRAMA *</label>
+            <input type="text" id="newTitle" placeholder="Ex: Photoshop 7.0 Lite Edition" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newCategory">CATEGORIA</label>
+              <select id="newCategory">
+                <option value="APP">APP (Aplicativo)</option>
+                <option value="GAMES">GAMES (Jogos)</option>
+                <option value="TOOLS">TOOLS (Ferramentas / Utilitarios)</option>
+                <option value="EMULADORES">EMULADORES</option>
+                <option value="SISTEMA">SISTEMA / DRIVERS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="newVersion">VERSAO</label>
+              <input type="text" id="newVersion" placeholder="Ex: v1.0, Build 2004">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newSize">TAMANHO</label>
+              <input type="text" id="newSize" placeholder="Ex: 15.4 MB, 1.2 GB">
+            </div>
+            <div class="form-group">
+              <label for="newStatus">STATUS</label>
+              <select id="newStatus">
+                <option value="VERIFICADO">VERIFICADO (Recomendado)</option>
+                <option value="HOT">HOT (Em Alta)</option>
+                <option value="REPACK">REPACK (Compactado/Mod)</option>
+                <option value="ATIVO">ATIVO</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newAuthor">UPLOADER (SEU NICK)</label>
+              <input type="text" id="newAuthor" placeholder="Ex: ChudMaster_99">
+            </div>
+            <div class="form-group">
+              <label for="newPass">SENHA DE DESCOMPACTACAO</label>
+              <input type="text" id="newPass" placeholder="Ex: chudvault ou sem-senha">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="newUrl">LINK DE DOWNLOAD PRINCIPAL *</label>
+            <input type="url" id="newUrl" placeholder="https://... ou link magnet:" required>
+          </div>
+
+          <div class="form-group">
+            <label for="newMirrorUrl">LINK ESPELHO / ALTERNATIVO (OPCIONAL)</label>
+            <input type="url" id="newMirrorUrl" placeholder="https://mediafire.com/... ou mega.nz/...">
+          </div>
+
+          <div class="form-group">
+            <label for="newDesc">DESCRICAO / OBSERVACOES DO FORUM</label>
+            <textarea id="newDesc" rows="3" placeholder="Informações do arquivo, compatibilidade com Windows, como instalar..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="newTags">TAGS (SEPARADAS POR VIRGULA)</label>
+            <input type="text" id="newTags" placeholder="app, portable, utilitario, retro">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btnCancelAddModal">CANCELAR</button>
+          <button type="submit" class="btn-primary">SALVAR &amp; INDEXAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: DETALHES / HASH MD5
+       ==================================================================== -->
+  <div class="modal-overlay" id="modalInfo" role="dialog" aria-modal="true">
+    <div class="modal-window">
+      <div class="modal-header">
+        <span>FICHA TECNICA DO DOWNLOAD</span>
+        <button class="modal-close-btn" id="btnCloseInfoModal">X</button>
+      </div>
+      <div class="modal-body" id="modalInfoBody">
+        <!-- Preenchido via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MASCOTE CHUDBEE VOADOR (ANIMAÇÃO RETRÔ)
+       ==================================================================== -->
+  <div class="chud-bee-container" id="chudBeeContainer" title="Clique no Chudbee!">
+    <div class="chud-bee-inner">
+      <img src="assets/chudbee.png" alt="Chudbee" class="chud-bee-img">
+      <div class="chud-bee-speech" id="chudBeeSpeech">BILLIONS MUST BUZZ</div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
