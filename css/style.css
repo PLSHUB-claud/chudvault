@@ -668,28 +668,30 @@ body {
   align-items: stretch;
   width: 100%;
   height: 100%;
+  background: #000000 !important;
 }
 
 .sidebar-anuncio-card {
-  background: #000000;
+  background: #000000 !important;
   border: 2px solid var(--border-color);
-  padding: 10px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.85);
   box-sizing: border-box;
 }
 
 .sidebar-anuncio-header {
   border-bottom: 1px dashed var(--border-secondary);
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  text-align: center;
 }
 
 .anuncio-badge {
   font-family: var(--font-pixel);
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-gold);
   letter-spacing: 1px;
   display: block;
@@ -701,65 +703,76 @@ body {
   width: 100%;
   text-decoration: none;
   line-height: 0;
+  cursor: pointer !important;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .sidebar-anuncie-link:hover {
   transform: scale(1.01);
-  filter: drop-shadow(0 0 10px rgba(255, 34, 34, 0.6));
+  filter: drop-shadow(0 0 12px rgba(255, 34, 34, 0.7));
 }
 
 .sidebar-anuncie-img {
   width: 100%;
-  max-height: 320px;
+  max-height: 340px;
   object-fit: contain;
   background: #080808;
-  border: 1px solid #333333;
+  border: 1px solid #444444;
   display: block;
+  cursor: pointer !important;
+  transition: border-color 0.2s ease;
+}
+
+.sidebar-anuncie-link:hover .sidebar-anuncie-img {
+  border-color: var(--text-red);
 }
 
 .sidebar-anuncio-body {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex: 1;
   justify-content: space-between;
 }
 
 .sidebar-anuncio-legenda {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: #dddddd;
-  line-height: 1.45;
-  background: rgba(255, 255, 255, 0.03);
-  border-left: 2px solid var(--border-color);
-  padding: 6px 8px;
+  font-size: 12px;
+  color: #ffffff !important;
+  line-height: 1.5;
+  background: #0e0e12 !important;
+  border: 1px solid #331111;
+  border-left: 3px solid var(--border-color);
+  padding: 10px 12px;
   margin: 0;
   word-break: break-word;
+  text-shadow: 1px 1px 2px #000000;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .btn-anuncio-discord {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #5865f2;
+  background: #5865f2 !important;
   color: #ffffff !important;
   font-family: var(--font-pixel);
-  font-size: 16px;
-  padding: 7px 12px;
-  border: 1px solid #7289da;
+  font-size: 18px;
+  padding: 8px 14px;
+  border: 2px outset #7289da;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.15s, transform 0.1s;
-  box-shadow: 0 2px 8px rgba(88, 101, 242, 0.3);
+  box-shadow: 0 3px 10px rgba(88, 101, 242, 0.4);
   text-align: center;
+  font-weight: bold;
 }
 
 .btn-anuncio-discord:hover {
-  background: #4752c4;
+  background: #4752c4 !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.5);
+  box-shadow: 0 4px 14px rgba(88, 101, 242, 0.6);
 }
 
 .sidebar-donate-box {
