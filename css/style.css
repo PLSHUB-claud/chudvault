@@ -1,13 +1,7 @@
-/* ==========================================================================
-   RETRO FORUM / CHUD ARCHIVE STYLESHEET
-   Aesthetic: Authentic Web 1.0, Classic Underground Forums (phpBB/vBulletin/Chan),
-              Raw Flat Contrast, Sharp Borders, Zero AI Neon Glow, Zero Emojis
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
 
 :root {
-  /* Default Theme: Blood Red Forum */
+  
   --bg-primary: #050508;
   --bg-secondary: rgba(14, 14, 16, 0.93);
   --bg-panel: rgba(18, 18, 22, 0.90);
@@ -22,7 +16,7 @@
   --text-red: #ff2222;
   --text-accent: #00cc55;
   --text-gold: #ffaa00;
-  --text-quote: #789922; /* Classic 4chan greentext */
+  --text-quote: #789922; 
   
   --font-pixel: 'VT323', monospace;
   --font-retro8: 'Press Start 2P', monospace;
@@ -31,7 +25,6 @@
   --font-impact: 'Impact', 'Arial Black', sans-serif;
 }
 
-/* Alternate Theme: Matrix Green */
 body.theme-matrix {
   --bg-primary: #020603;
   --bg-secondary: rgba(6, 20, 8, 0.93);
@@ -42,7 +35,6 @@ body.theme-matrix {
   --text-accent: #ffaa00;
 }
 
-/* Alternate Theme: Win98 Silver / Blue Forum */
 body.theme-win98 {
   --bg-primary: #008080;
   --bg-secondary: #c0c0c0;
@@ -86,7 +78,6 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Layout em 2 Colunas: Coluna Principal + Barra Lateral Retrô */
 .site-wrapper {
   max-width: 1440px;
   min-width: 1200px;
@@ -105,9 +96,6 @@ body {
   min-width: 0;
 }
 
-/* ==========================================================================
-   1. BANNER SECTION (Apenas o GIF rodando limpo, borda branca de 2px)
-   ========================================================================== */
 .section-banner {
   background: #000000;
   border: 2px solid var(--border-white);
@@ -134,9 +122,6 @@ body {
   display: block;
 }
 
-/* ==========================================================================
-   2. APP & CATEGORIAS (Sharp Red Border)
-   ========================================================================== */
 .section-app-categories {
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
@@ -200,9 +185,6 @@ body {
   color: #fff;
 }
 
-/* ==========================================================================
-   3. DOWNLOADS SECTION (Sharp Red Borders, Clean Cards)
-   ========================================================================== */
 .section-downloads {
   background: var(--bg-panel);
   border: 2px solid var(--border-color);
@@ -244,7 +226,6 @@ body {
   color: var(--text-red);
 }
 
-/* Títulos com efeito de chamas animadas */
 .flame-title-pic {
   display: inline-flex;
   align-items: center;
@@ -289,7 +270,6 @@ body {
   font-weight: bold;
 }
 
-/* Search and Controls Bar */
 .search-filter-bar {
   display: flex;
   gap: 8px;
@@ -328,14 +308,12 @@ body {
   cursor: pointer;
 }
 
-/* Downloads List Grid */
 .downloads-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* Single Download Forum Card (Flat sharp retro look) */
 .dl-card {
   background: var(--bg-secondary);
   border: 1px solid #333333;
@@ -460,7 +438,6 @@ body {
   display: none !important;
 }
 
-/* Download Buttons & Actions */
 .dl-action-bar {
   display: flex;
   justify-content: space-between;
@@ -538,7 +515,6 @@ body {
   border-color: #888;
 }
 
-/* Card Body Layout & Side Thumbnail (Raw & Larger) */
 .dl-card-body-layout {
   display: flex;
   gap: 16px;
@@ -570,9 +546,6 @@ body {
   background: #000;
 }
 
-
-
-/* Empty State */
 .empty-state {
   text-align: center;
   padding: 24px 10px;
@@ -582,9 +555,6 @@ body {
   border: 1px dashed #333;
 }
 
-/* ==========================================================================
-   4. AVISOS SECTION (Sharp Red Border)
-   ========================================================================== */
 .section-avisos {
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
@@ -634,9 +604,6 @@ body {
   color: var(--text-gold);
 }
 
-/* ==========================================================================
-   5. BARRA LATERAL / SIDEBAR (Sharp Flat Boxes)
-   ========================================================================== */
 .sidebar-column {
   display: flex;
   flex-direction: column;
@@ -650,7 +617,6 @@ body {
   padding: 10px;
 }
 
-/* Banner Portal Oficial PLSHUB (Sem borda vermelha, moldura natural do próprio design) */
 .sidebar-portal-banner {
   background: transparent;
   border: none;
@@ -665,7 +631,6 @@ body {
   display: block;
 }
 
-/* Linha Central da Sidebar: Boneco Flutuando (Esquerda) + Anuncie sua Comunidade (Direita - Área Azul) */
 .sidebar-mid-row {
   display: grid;
   grid-template-columns: minmax(190px, 0.75fr) minmax(280px, 1.25fr);
@@ -697,7 +662,6 @@ body {
   flex: 1;
 }
 
-/* Anuncie sua comunidade / Ornate Frame (Área Azul) */
 .sidebar-anuncie-box {
   display: flex;
   justify-content: center;
@@ -726,9 +690,6 @@ body {
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.8));
 }
 
-/* ==========================================================================
-   Bloco de Doações Bitcoin (Fundo 100% preto, layout conforme referência)
-   ========================================================================== */
 .sidebar-donate-box {
   background: #000000 !important;
   border: 2px solid var(--border-color);
@@ -810,7 +771,6 @@ body {
   image-rendering: pixelated;
 }
 
-/* Cantoneiras vermelhas estilo HUD/alvo conforme referência */
 .qr-bracket {
   position: absolute;
   width: 10px;
@@ -1035,9 +995,6 @@ body {
   gap: 6px;
 }
 
-/* ==========================================================================
-   5.5. COMUNIDADES SECTION (Abaixo de todo o conteúdo)
-   ========================================================================== */
 .section-comunidades {
   grid-column: 1 / -1;
   background: var(--bg-secondary);
@@ -1137,9 +1094,6 @@ body {
   flex-shrink: 0;
 }
 
-/* ==========================================================================
-   6. FOOTER & RETRO BADGES
-   ========================================================================== */
 .site-footer {
   grid-column: 1 / -1;
   text-align: center;
@@ -1148,7 +1102,6 @@ body {
   border-top: 1px dotted #333;
 }
 
-/* Vintage Visitor Counter */
 .counter-box {
   display: inline-flex;
   align-items: center;
@@ -1171,7 +1124,6 @@ body {
   border: 1px solid #004411;
 }
 
-/* 88x31 Badges */
 .badge-88x31 {
   width: 88px;
   height: 31px;
@@ -1216,9 +1168,6 @@ body {
   color: #666;
 }
 
-/* ==========================================================================
-   7. MODALS (Add New Download & Details)
-   ========================================================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1347,7 +1296,6 @@ body {
   background: #ee0000;
 }
 
-/* Toast alert notification */
 .retro-toast {
   position: fixed;
   bottom: 20px;
@@ -1362,15 +1310,10 @@ body {
   display: none;
 }
 
-
-
-/* ==========================================================================
-   MASCOTE CHUDBEE - ANIMAÇÃO DE VOO FLUTUANTE (ESTILO OBS / VÍDEO EXEMPLO)
-   ========================================================================== */
 .chud-bee-container {
   position: fixed;
   z-index: 99999;
-  width: 114px; /* Aumentado em 50% (de 76px para 114px) */
+  width: 114px; 
   height: auto;
   pointer-events: auto;
   cursor: pointer;
@@ -1390,7 +1333,6 @@ body {
   animation: chudBeeFlightPathBackward 11s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 
-/* Quando está voltando (da direita pra esquerda), vira a imagem horizontalmente para voar de frente */
 .chud-bee-container.flying-backward .chud-bee-img {
   transform: scaleX(-1);
 }
@@ -1399,7 +1341,6 @@ body {
   transform: scale(1.15) rotate(15deg);
 }
 
-/* Micro-vibração das asas / zumbido contínuo */
 .chud-bee-inner {
   position: relative;
   width: 100%;
@@ -1413,7 +1354,6 @@ body {
   transition: transform 0.2s ease;
 }
 
-/* Balão retrô estilo pixel speech bubble */
 .chud-bee-speech {
   position: absolute;
   top: -30px;
@@ -1438,7 +1378,6 @@ body {
   transform: translateX(-50%) translateY(-2px);
 }
 
-/* Vibração rápida das asas */
 @keyframes chudBeeBuzz {
   0% {
     transform: translateY(0px) rotate(-1.5deg);
@@ -1448,10 +1387,6 @@ body {
   }
 }
 
-/* 
-  TRAJETÓRIA DE IDA (ESQUERDA -> DIREITA):
-  Baseada fielmente no vídeo de exemplo
-*/
 @keyframes chudBeeFlightPathForward {
   0% {
     left: -140px;
@@ -1506,10 +1441,6 @@ body {
   }
 }
 
-/* 
-  TRAJETÓRIA DE VOLTA (DIREITA -> ESQUERDA):
-  Retorna cruzando a tela na direção oposta
-*/
 @keyframes chudBeeFlightPathBackward {
   0% {
     left: 106vw;
@@ -1558,4 +1489,3 @@ body {
     opacity: 0;
   }
 }
-

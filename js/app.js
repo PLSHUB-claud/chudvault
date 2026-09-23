@@ -1,9 +1,3 @@
-/**
- * RETRO FORUM / CHUD MEME DOWNLOAD HUB
- * Core Application Logic
- */
-
-// Initial Seed Dataset (serves as immediate fallback if opened directly via file://)
 const DEFAULT_DOWNLOADS = [
   {
     "id": "dl-mogged-vpn",
@@ -46,14 +40,12 @@ const DEFAULT_DOWNLOADS = [
   }
 ];
 
-// App State
 let allDownloads = [...DEFAULT_DOWNLOADS];
 let currentCategory = 'ALL';
 let searchQuery = '';
 let currentSort = 'recent';
 let soundEnabled = true;
 
-// Web Audio API Retro Sound Effects
 class RetroAudio {
   constructor() {
     this.ctx = null;
@@ -130,7 +122,6 @@ class RetroAudio {
 
 const sfx = new RetroAudio();
 
-// Initialize App
 document.addEventListener('DOMContentLoaded', async () => {
   await initStorageAndData();
   initVisitorCounter();
@@ -140,13 +131,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initChudBee();
 });
 
-// ============================================================================
-// SECURITY & SANITIZATION UTILITIES
-// ============================================================================
-
-/**
- * Escapes characters that could trigger HTML execution inside text nodes.
- */
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
   return String(str)
@@ -157,9 +141,6 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-/**
- * Escapes characters for HTML attributes (including backticks to prevent template injections).
- */
 function escapeAttr(str) {
   if (str === null || str === undefined) return '';
   return escapeHtml(str)
@@ -167,29 +148,24 @@ function escapeAttr(str) {
     .replace(/=/g, '&#61;');
 }
 
-/**
- * Sanitizes URLs to prevent protocol-based XSS (javascript:, vbscript:, data:text/html, etc.).
- * Allows only http:, https:, relative paths, and safe anchors.
- */
 function sanitizeUrl(url) {
   if (!url || typeof url !== 'string') return '#';
   const trimmed = url.trim();
-  // Reject dangerous protocol injections
+  
   if (/^\s*(javascript|data|vbscript|file):/i.test(trimmed)) {
     return '#';
   }
-  // Allow safe web URLs and relative paths
+  
   if (/^(?:https?:\/\/|\/|\.\/|#|magnet:)/i.test(trimmed)) {
     return trimmed;
   }
-  // Safe relative paths (e.g. assets/pic.jpg)
+  
   if (/^[a-zA-Z0-9_\-\.\/]+$/i.test(trimmed)) {
     return trimmed;
   }
   return '#';
 }
 
-// Normaliza URLs do GitHub para download raw direto sem páginas ou redirects intermediários
 function getDirectDownloadUrl(url) {
   if (!url) return '#';
   let safe = sanitizeUrl(url);
@@ -205,10 +181,9 @@ function getDirectDownloadUrl(url) {
   return safe;
 }
 
-// Tenta buscar o README.md do repositório no GitHub para atualizar a descrição dinamicamente
 async function fetchRepoReadme(url) {
   if (!url) return null;
-  // Validates owner and repository with strict character sets (no path traversal .. or specials)
+  
   const match = url.match(/(?:github\.com|raw\.githubusercontent\.com)\/([a-zA-Z0-9_\-\.]+)\/([a-zA-Z0-9_\-\.]+)/i);
   if (!match) return null;
   const owner = encodeURIComponent(match[1]);
@@ -221,7 +196,7 @@ async function fetchRepoReadme(url) {
       if (res.ok) {
         const text = await res.text();
         const trimmed = text.trim();
-        // Limit string size to prevent denial of service from huge READMEs
+        
         if (trimmed) return trimmed.slice(0, 1500);
       }
     } catch (e) {}
@@ -229,7 +204,6 @@ async function fetchRepoReadme(url) {
   return null;
 }
 
-// Load Data from downloads.json or fallback + localStorage
 async function initStorageAndData() {
   let loadedData = null;
   
@@ -246,7 +220,6 @@ async function initStorageAndData() {
     ? loadedData 
     : DEFAULT_DOWNLOADS;
 
-  // Safe localStorage parsing with try/catch to avoid crash on poisoned/corrupt storage
   let customItems = [];
   try {
     const raw = localStorage.getItem('retro_downloads_custom');
@@ -268,7 +241,7 @@ async function initStorageAndData() {
   for (const item of [...customItems, ...baseItems]) {
     if (item && item.id && !seenIds.has(item.id)) {
       seenIds.add(item.id);
-      // Garante URLs de download direto e higienizadas
+      
       if (Array.isArray(item.links)) {
         item.links.forEach(l => {
           if (l && l.url) l.url = getDirectDownloadUrl(l.url);
@@ -280,7 +253,6 @@ async function initStorageAndData() {
 
   allDownloads = merged;
 
-  // Sincroniza dinamicamente o README dos repositórios GitHub para a descrição
   allDownloads.forEach(item => {
     const primaryUrl = item.links && item.links[0] ? item.links[0].url : '';
     if (primaryUrl && (primaryUrl.includes('github.com') || primaryUrl.includes('raw.githubusercontent.com'))) {
@@ -294,7 +266,6 @@ async function initStorageAndData() {
   });
 }
 
-// Visitor Counter Simulation with persistent storage
 function initVisitorCounter() {
   let count = parseInt(localStorage.getItem('retro_visitor_count') || '4289');
   count += 1;
@@ -305,9 +276,8 @@ function initVisitorCounter() {
   }
 }
 
-// Event Listeners setup
 function setupEventListeners() {
-  // Search Bar
+  
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -316,7 +286,6 @@ function setupEventListeners() {
     });
   }
 
-  // Sort Select
   const sortSelect = document.getElementById('sortSelect');
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
@@ -326,7 +295,6 @@ function setupEventListeners() {
     });
   }
 
-  // Theme Switcher
   const toggleThemeBtn = document.getElementById('toggleTheme');
   if (toggleThemeBtn) {
     const themes = ['theme-default', 'theme-matrix', 'theme-win98'];
@@ -343,7 +311,6 @@ function setupEventListeners() {
     });
   }
 
-  // Sound Toggle
   const toggleSoundBtn = document.getElementById('toggleSound');
   if (toggleSoundBtn) {
     toggleSoundBtn.addEventListener('click', () => {
@@ -353,7 +320,6 @@ function setupEventListeners() {
     });
   }
 
-  // Add Download Modal triggers
   const btnOpenAddModal = document.getElementById('btnOpenAddModal');
   const sidebarBtnAdd = document.getElementById('sidebarBtnAdd');
   const btnCloseAddModal = document.getElementById('btnCloseAddModal');
@@ -377,7 +343,6 @@ function setupEventListeners() {
   if (btnCloseAddModal) btnCloseAddModal.addEventListener('click', closeModal);
   if (btnCancelAddModal) btnCancelAddModal.addEventListener('click', closeModal);
 
-  // Form Submit (Add New Download)
   if (formAddDownload) {
     formAddDownload.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -386,7 +351,6 @@ function setupEventListeners() {
     });
   }
 
-  // Export JSON buttons
   const btnExportJson = document.getElementById('btnExportJson');
   const sidebarBtnExport = document.getElementById('sidebarBtnExport');
   const handleExport = () => {
@@ -396,7 +360,6 @@ function setupEventListeners() {
   if (btnExportJson) btnExportJson.addEventListener('click', handleExport);
   if (sidebarBtnExport) sidebarBtnExport.addEventListener('click', handleExport);
 
-  // Bitcoin Donate copy button & address click
   const btnCopyBtc = document.getElementById('btnCopyBtcSidebar');
   const btcAddrEl = document.getElementById('sidebarBtcAddr');
   const btcText = document.getElementById('btnCopyBtcSidebarText');
@@ -418,15 +381,14 @@ function setupEventListeners() {
   if (btnCopyBtc) btnCopyBtc.addEventListener('click', handleCopyBtc);
   if (btcAddrEl) btcAddrEl.addEventListener('click', handleCopyBtc);
 
-  // Global click sound delegation for links and buttons (exceto botões de cópia e botões de download)
   document.addEventListener('click', (e) => {
-    // Ignorar som para botões de cópia e botões de download
+    
     if (e.target.closest('.btn-donate-copy, #sidebarBtcAddr, #btnCopyBtcSidebar, .btn-copy-hash, .btn-retro-dl, .btn-mirror, a[download]')) {
       const dlBtn = e.target.closest('.btn-retro-dl, a[download]');
       if (dlBtn) {
         showToast('[⬇] Iniciando download direto do instalador...');
       }
-      return; // Sem som ao copiar nem ao baixar apps
+      return; 
     }
     if (e.target.closest('button, .btn-cat, .btn-sidebar-action')) {
       sfx.playClick();
@@ -434,14 +396,12 @@ function setupEventListeners() {
   });
 }
 
-// Render Category Filter Buttons
 function renderCategories() {
   const container = document.getElementById('categoryButtons');
   if (!container) return;
 
   const categories = ['ALL', 'APP', 'GAMES', 'TOOLS', 'EMULADORES', 'SISTEMA'];
-  
-  // Count items
+
   const counts = { 'ALL': allDownloads.length };
   allDownloads.forEach(item => {
     const cat = (item.category || 'APP').toUpperCase();
@@ -469,13 +429,11 @@ function renderCategories() {
   });
 }
 
-// Render Downloads List
 function renderDownloads() {
   const listEl = document.getElementById('downloadsList');
   const countEl = document.getElementById('downloadsCount');
   if (!listEl) return;
 
-  // Filter
   let filtered = allDownloads.filter(item => {
     const matchesCat = currentCategory === 'ALL' || (item.category && item.category.toUpperCase() === currentCategory);
     
@@ -493,7 +451,6 @@ function renderDownloads() {
     return fullText.includes(searchQuery);
   });
 
-  // Sort
   filtered.sort((a, b) => {
     if (currentSort === 'recent') {
       const diff = new Date(b.date || '2026-01-01') - new Date(a.date || '2026-01-01');
@@ -531,7 +488,6 @@ function renderDownloads() {
 
   listEl.innerHTML = filtered.map(item => createDownloadCardHtml(item)).join('');
 
-  // Attach card specific buttons
   listEl.querySelectorAll('.btn-show-info').forEach(btn => {
     btn.addEventListener('click', () => {
       sfx.playClick();
@@ -547,7 +503,6 @@ function renderDownloads() {
   });
 }
 
-// Generate Card HTML (Fully Escaped & Sanitized)
 function createDownloadCardHtml(item) {
   const safeId = escapeAttr(item.id || 'dl-' + Math.random().toString(36).substr(2, 9));
   const safeCategory = escapeHtml(item.category || 'APP');
@@ -561,7 +516,6 @@ function createDownloadCardHtml(item) {
   const safeDesc = escapeHtml(item.desc || '');
   const safeGreentext = escapeHtml(item.greentext || '');
 
-  // Renderiza todos os botões de download disponíveis de forma sanitizada
   const linksHtml = (item.links && Array.isArray(item.links) && item.links.length > 0)
     ? item.links.map(link => {
         const rawUrl = getDirectDownloadUrl(link.url);
@@ -623,7 +577,6 @@ function createDownloadCardHtml(item) {
   `;
 }
 
-// Handle Adding a New Download (Input validation & sanitization)
 function handleAddNewDownload() {
   const title = document.getElementById('newTitle').value.trim();
   const category = document.getElementById('newCategory').value;
@@ -654,7 +607,6 @@ function handleAddNewDownload() {
     links.push({ name: 'Espelho Secundário', url: mirrorUrl, type: 'mirror' });
   }
 
-  // Generate pseudorandom MD5 for retro feel if not provided
   const randomMd5 = Array.from({length: 32}, () => Math.floor(Math.random()*16).toString(16)).join('');
 
   const newDownload = {
@@ -673,13 +625,11 @@ function handleAddNewDownload() {
     pass
   };
 
-  // Prepend to all downloads and save to localStorage
   allDownloads.unshift(newDownload);
   const customItems = JSON.parse(localStorage.getItem('retro_downloads_custom') || '[]');
   customItems.unshift(newDownload);
   localStorage.setItem('retro_downloads_custom', JSON.stringify(customItems));
 
-  // Reset & close
   document.getElementById('formAddDownload').reset();
   document.getElementById('modalAddDownload').classList.remove('active');
 
@@ -688,7 +638,6 @@ function handleAddNewDownload() {
   showToast(`[OK] Download "${escapeHtml(title)}" indexado com sucesso!`);
 }
 
-// Show Info / Hash Modal (Sanitized)
 function showInfoModal(id) {
   const item = allDownloads.find(d => d.id === id);
   if (!item) return;
@@ -749,7 +698,6 @@ function showInfoModal(id) {
   }
 }
 
-// Export data as JSON file for backup / permanent saving
 function exportDownloadsJson() {
   const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(allDownloads, null, 2));
   const downloadAnchor = document.createElement('a');
@@ -761,7 +709,6 @@ function exportDownloadsJson() {
   showToast('[OK] Arquivo downloads.json exportado!');
 }
 
-// Toast notification helper
 function showToast(message) {
   let toast = document.getElementById('retroToast');
   if (!toast) {
@@ -777,17 +724,12 @@ function showToast(message) {
   }, 3500);
 }
 
-
-// ============================================================================
-// CHUDBEE MASCOT LOGIC (Animação de voo infinito: vai e volta a cada 5s)
-// ============================================================================
 function initChudBee() {
   const beeContainer = document.getElementById('chudBeeContainer');
   const beeSpeech = document.getElementById('chudBeeSpeech');
   const btnTrigger = document.getElementById('sidebarBtnBee');
   if (!beeContainer) return;
 
-  // Contexto de áudio para ganho estourado/meme
   let beeAudioCtx = null;
 
   function playBeeVoiceOverlapping() {
@@ -800,24 +742,21 @@ function initChudBee() {
         beeAudioCtx.resume();
       }
 
-      // Cria uma nova instância a cada clique para permitir sobreposição de áudios simultâneos
       const sound = new Audio('assets/audio_paz.m4a');
       const source = beeAudioCtx.createMediaElementSource(sound);
       const gainNode = beeAudioCtx.createGain();
 
-      // Volume aumentado e estourado (estilo meme boost)
       gainNode.gain.value = 3.2;
 
       source.connect(gainNode);
       gainNode.connect(beeAudioCtx.destination);
 
       sound.play().catch(() => {
-        // Fallback em caso de restrição do navegador
+        
         const fallbackSound = new Audio('assets/audio_paz.m4a');
         fallbackSound.play().catch(() => {});
       });
 
-      // Libera os nós ao finalizar o áudio
       sound.addEventListener('ended', () => {
         try {
           source.disconnect();
@@ -825,7 +764,7 @@ function initChudBee() {
         } catch (e) {}
       });
     } catch (err) {
-      // Fallback nativo: garante que toca mesmo sem Web Audio API
+      
       const sound = new Audio('assets/audio_paz.m4a');
       sound.play().catch(() => {});
     }
@@ -842,7 +781,7 @@ function initChudBee() {
     'NETSCAPE 4.0 READY'
   ];
 
-  let currentDirection = 'forward'; // 'forward' (ida) ou 'backward' (volta)
+  let currentDirection = 'forward'; 
   let isFlying = false;
   let nextFlightTimeout = null;
   let speechTimeout = null;
@@ -853,46 +792,36 @@ function initChudBee() {
 
     const dir = forcedDirection || currentDirection;
 
-    // Remove ambas as classes e força reflow
     beeContainer.classList.remove('flying-forward', 'flying-backward');
     void beeContainer.offsetWidth;
 
-    // Aplica a classe da direção atual
     if (dir === 'forward') {
       beeContainer.classList.add('flying-forward');
     } else {
       beeContainer.classList.add('flying-backward');
     }
 
-    // Sem som de bip ao surgir (voo silencioso)
-
-    // Sorteia frase para o balãozinho
     if (beeSpeech) {
       beeSpeech.textContent = phrases[Math.floor(Math.random() * phrases.length)];
       beeSpeech.classList.remove('show-speech');
     }
   }
 
-  // Ao terminar o trajeto do voo (saiu da tela)
   beeContainer.addEventListener('animationend', () => {
     beeContainer.classList.remove('flying-forward', 'flying-backward');
     isFlying = false;
 
-    // Inverte a direção: se foi pra direita, agora volta pra esquerda (e vice-versa)
     currentDirection = (currentDirection === 'forward') ? 'backward' : 'forward';
 
-    // Aguarda exatamente 5 segundos e dispara o próximo voo de volta (loop infinito)
     clearTimeout(nextFlightTimeout);
     nextFlightTimeout = setTimeout(() => {
       flyBee();
     }, 5000);
   });
 
-  // Interação ao clicar na abelhinha (toca áudio amplificado a cada clique, sobrepondo)
   beeContainer.addEventListener('click', (e) => {
     e.stopPropagation();
 
-    // Toca o áudio estourado permitindo sobreposição imediata
     playBeeVoiceOverlapping();
 
     if (beeSpeech) {
@@ -907,7 +836,6 @@ function initChudBee() {
     }
   });
 
-  // Botão na barra lateral de Atalhos
   if (btnTrigger) {
     btnTrigger.addEventListener('click', () => {
       clearTimeout(nextFlightTimeout);
@@ -916,9 +844,7 @@ function initChudBee() {
     });
   }
 
-  // Primeiro voo inicia 2 segundos após carregar a página
   nextFlightTimeout = setTimeout(() => {
     flyBee('forward');
   }, 2000);
 }
-

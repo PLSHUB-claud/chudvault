@@ -1,6 +1,3 @@
-/**
- * RETRO DONATE PAGE LOGIC
- */
 document.addEventListener('DOMContentLoaded', () => {
   const addr = "bc1qdhvekhnhwl70wf0gzc8fgl8mxnxgng5um0fqvu";
   const btn = document.getElementById('btnCopy');
