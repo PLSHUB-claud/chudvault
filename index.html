@@ -14,19 +14,17 @@
 
   <div class="site-wrapper">
 
-    <!-- ====================================================================
-         COLUNA PRINCIPAL (Esquerda - conforme silhueta do esboço)
-         ==================================================================== -->
+    
     <div class="main-column">
 
-      <!-- 1. BANNER (Apenas o GIF rodando em loop contínuo, sem legendas) -->
+      
       <section class="section-banner" aria-label="Banner Principal">
         <div class="banner-gif-container">
           <img src="assets/gif_cena_completa_360.gif" alt="Banner 360" class="banner-gif">
         </div>
       </section>
 
-      <!-- 2. DOWNLOADS -->
+     
       <main class="section-downloads" aria-label="Lista de Downloads">
         <div class="downloads-title-bar">
           <div class="downloads-title">
@@ -38,7 +36,7 @@
           </div>
         </div>
 
-        <!-- Barra de Pesquisa -->
+        
         <div class="search-filter-bar">
           <div class="search-input-wrapper">
             <input 
@@ -52,13 +50,13 @@
           </div>
         </div>
 
-        <!-- Lista / Grid de Downloads -->
+        
         <div class="downloads-list" id="downloadsList">
-          <!-- Inserido dinamicamente via JS -->
+          
         </div>
       </main>
 
-      <!-- 4. AVISO LEGAL / DISCLAIMER -->
+      
       <aside class="section-avisos" id="avisosSection" aria-label="Aviso Legal / Disclaimer">
         <div class="avisos-title">
           <div>
@@ -77,24 +75,22 @@
 
     </div>
 
-    <!-- ====================================================================
-         BARRA LATERAL / SIDEBAR (Direita - conforme silhueta vertical do esboço)
-         ==================================================================== -->
+    
     <aside class="sidebar-column" aria-label="Painel Lateral do Sistema">
 
-      <!-- Bloco: Banner Portal Oficial PLSHUB (Área Verde) -->
+      
       <div class="sidebar-portal-banner" aria-label="Portal Oficial PLSHUB">
         <img src="assets/portal_plshub.png" alt="Portal oficial para downloads de PLSHUB!" class="portal-banner-img">
       </div>
 
-      <!-- Linha Central da Sidebar: Boneco Flutuando (Esquerda) + Anuncie sua Comunidade (Direita - Área Azul) -->
+      
       <div class="sidebar-mid-row">
-        <!-- Bloco: GIF Boneco Flutuando no Espaço -->
+        
         <div class="sidebar-box sidebar-gif-box" aria-label="Boneco Flutuando">
           <img src="assets/boneco_flutuando_espaco.gif" alt="Boneco Flutuando no Espaço" class="sidebar-gif">
         </div>
 
-        <!-- Bloco: Anuncie sua comunidade / Ornate Frame (Área Azul desenhada) -->
+        
         <div class="sidebar-anuncie-box" aria-label="Anuncie sua comunidade">
           <a href="https://discord.gg/uHMcazd2qA" target="_blank" rel="noopener noreferrer" class="sidebar-anuncie-link" title="Anuncie sua comunidade aqui! Clique para entrar no Discord">
             <img src="assets/anuncie_comunidade.png" alt="Anuncie sua comunidade/grupo aqui" class="sidebar-anuncie-img">
@@ -102,7 +98,7 @@
         </div>
       </div>
 
-      <!-- Bloco: Donate Bitcoin (Área Inferior desenhada) -->
+      
       <div class="sidebar-box sidebar-donate-box" aria-label="Doação via Bitcoin">
         <div class="donate-header">
           <img src="assets/btc_donate_badge.png" alt="Bitcoin Donate" class="donate-badge-img">
@@ -113,7 +109,7 @@
         </div>
 
         <div class="donate-body-row">
-          <!-- Miniatura do QR Code com link para tela cheia -->
+          
           <a href="donate.html" target="_blank" rel="noopener noreferrer" class="donate-qr-frame" title="Clique para abrir o QR Code em tela cheia">
             <div class="qr-bracket tl"></div>
             <div class="qr-bracket tr"></div>
@@ -123,7 +119,7 @@
             <span class="qr-click-text">CLIQUE PARA AMPLIAR</span>
           </a>
 
-          <!-- Endereço e Botão Copiar -->
+          
           <div class="donate-info-col">
             <div class="donate-address-label">ENDEREÇO BTC:</div>
             <div class="donate-address-text" id="sidebarBtcAddr" title="Clique para copiar">bc1qdhvekhnhwl70wf0gzc8fgl8mxnxgng5um0fqvu</div>
@@ -140,9 +136,7 @@
 
     </aside>
 
-    <!-- ====================================================================
-         5. SEÇÃO DE COMUNIDADES (Abaixo de todo o conteúdo do site)
-         ==================================================================== -->
+   
     <section class="section-comunidades" id="comunidadesSection" aria-label="Comunidades">
       <div class="comunidades-title-bar">
         <div class="comunidades-title">
@@ -173,9 +167,7 @@
 
   </div>
 
-  <!-- ====================================================================
-       MODAL 1: CADASTRAR NOVO DOWNLOAD
-       ==================================================================== -->
+  
   <div class="modal-overlay" id="modalAddDownload" role="dialog" aria-modal="true" aria-labelledby="modalAddTitle">
     <div class="modal-window">
       <div class="modal-header">
@@ -262,9 +254,7 @@
     </div>
   </div>
 
-  <!-- ====================================================================
-       MODAL 2: DETALHES / HASH MD5
-       ==================================================================== -->
+ 
   <div class="modal-overlay" id="modalInfo" role="dialog" aria-modal="true">
     <div class="modal-window">
       <div class="modal-header">
@@ -272,14 +262,12 @@
         <button class="modal-close-btn" id="btnCloseInfoModal">X</button>
       </div>
       <div class="modal-body" id="modalInfoBody">
-        <!-- Preenchido via JS -->
+        
       </div>
     </div>
   </div>
 
-  <!-- ====================================================================
-       MASCOTE CHUDBEE VOADOR (ANIMAÇÃO RETRÔ)
-       ==================================================================== -->
+ >
   <div class="chud-bee-container" id="chudBeeContainer" title="Clique no Chudbee!">
     <div class="chud-bee-inner">
       <img src="assets/chudbee.png" alt="Chudbee" class="chud-bee-img">
